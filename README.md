@@ -122,6 +122,7 @@ A web application built with React and TypeScript for managing inter-university 
 
 - Node.js (v18 or later recommended)
 - npm, yarn, or pnpm
+- Create a `.env` file that contains the `VITE_API_URL` variable with the backend URL
 
 ### Installation
 
