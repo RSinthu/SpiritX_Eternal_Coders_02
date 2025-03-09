@@ -1,5 +1,7 @@
+import PlayerList from "../components/PlayerList";
+
 const AdminPage = () => {
-  return <div>AdminPage</div>;
+  return <PlayerList />;
 };
 
 export default AdminPage;
