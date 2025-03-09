@@ -60,6 +60,7 @@ query_prompt = PromptTemplate(
     8. DO NOT include any words rather than raw sql query. Strictly follow this rule.
     9. IF user ask about top or best 11 players, provide the top 11 players based on points.but don't reveal the points.
     10. AGAIN DO NOT include any words rather than raw sql query.
+    11. If user ask any conversational query rather than player data,don't retrieve any data from database.
     ## Output (MySQL query only no other words like sql):
     """
 )
@@ -75,7 +76,8 @@ response_prompt = PromptTemplate(
     If the user is asking about the highest or lowest metric, retrieve the actual value associated with it and select the first name from the list. Provide the answer including both the name and the corresponding value.
     If the user query and query result are irrelevant, provide a response indicating that you can't answer the question.
     If the user is asking about the top 11 players, provide the names of the players in query results.So answer the user queries based on query results.
-
+    If the user is asking about any conversational general query rather than player data, provide a general response without referring to the query results.strictly follow this rule.
+    
     DO NOT reveal player's points under any circumstances.strictly follow this rule.If your ask about it provide answer about can't reveal points.
     Provide a natural language summary that directly answers the user's question.
     Keep the response conversational and highlight key insights from the data.
@@ -123,11 +125,3 @@ def process_user_query(user_query):
     except Exception as e:
         return f"Sorry, I encountered an error processing your query: {str(e)}"
 
-
-# while True:
-#     user_question = input("Enter the question: ")
-#     result = process_user_query(user_question)
-#     print(result)
-#     choice = input("Do you want to continue the question(say yes/no): ")
-#     if choice.lower() == "no":
-#         break
